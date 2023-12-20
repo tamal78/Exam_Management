@@ -40,7 +40,7 @@ const ExamDetail = () => {
   const handleSave = async () => {
     try {
       await axios.put(
-        `https://exam-api-gwj5.onrender.com/api/exams${examId}`,
+        `https://exam-api-gwj5.onrender.com/api/exams/${examId}`,
         exam
       );
       alert('Exam and MCQs updated successfully!');

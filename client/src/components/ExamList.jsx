@@ -22,7 +22,9 @@ const ExamList = () => {
   const deleteExam = examId => {
     axios
       .delete(`https://exam-api-gwj5.onrender.com/api/exams/${examId}`)
-      .then(fetchExams())
+      .then(() => {
+        fetchExams();
+      })
       .catch(error => console.error('Error fetching exams', error));
   };
   const editExam = examId => {
@@ -31,6 +33,15 @@ const ExamList = () => {
 
   return (
     <div className='container mx-auto p-4'>
+      <button
+        onClick={() => {
+          navigate(`/`);
+        }}
+        type='button'
+        className='rounded-md bg-black p-4 mb-7 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black'
+      >
+        Home
+      </button>
       <h1 className='text-2xl font-bold mb-4'>Exams</h1>
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
         {exams.map(exam => (
