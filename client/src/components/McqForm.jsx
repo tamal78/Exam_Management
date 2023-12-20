@@ -2,12 +2,11 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 
-const MCQForm = () => {
+const MCQForm = ({ setShowMCQForm, show, onAddMcq, fetchdetails }) => {
   const [question, setQuestion] = useState('');
   const [options, setOptions] = useState(['', '', '', '']);
   const [correctOption, setCorrectOption] = useState('');
   const navigate = useNavigate();
-  const params = useParams();
   const { examId } = useParams();
 
   const handleOptionChange = (optionIndex, value) => {
@@ -25,11 +24,14 @@ const MCQForm = () => {
     };
 
     try {
-      await axios.post(
+      const response = await axios.post(
         'https://exam-api-gwj5.onrender.com/api/mcqs',
         mcqData
       );
       alert('MCQ added successfully!');
+      // onAddMcq(response.data);
+      fetchdetails();
+      setShowMCQForm(false);
       setQuestion('');
       setOptions(['', '', '', '']);
       setCorrectOption('');
@@ -90,16 +92,17 @@ const MCQForm = () => {
         onClick={handleMCQSubmit}
         className='bg-blue-500 text-white px-3 py-1 rounded mr-2'
       >
-        Add MCQ
+        Save MCQ
       </button>
-
-      <button
-        type='button'
-        onClick={handleFinish}
-        className='bg-green-500 text-white px-3 py-1 rounded'
-      >
-        Finish
-      </button>
+      {!show && (
+        <button
+          type='button'
+          onClick={handleFinish}
+          className='bg-green-500 text-white px-3 py-1 rounded'
+        >
+          Finish
+        </button>
+      )}
     </div>
   );
 };

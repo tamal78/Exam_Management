@@ -1,24 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
+import McqForm from './McqForm';
 
 const ExamDetail = () => {
   const [exam, setExam] = useState({ title: '', duration: '', mcqs: [] });
   const { examId } = useParams();
   const navigate = useNavigate();
+  const [showMCQForm, setShowMCQForm] = useState(false);
 
+  const fetchExamDetails = async () => {
+    try {
+      const response = await axios.get(
+        `https://exam-api-gwj5.onrender.com/api/exams/${examId}`
+      );
+      setExam(response.data);
+    } catch (error) {
+      console.error('Error fetching exam details', error);
+    }
+  };
   useEffect(() => {
-    const fetchExamDetails = async () => {
-      try {
-        const response = await axios.get(
-          `https://exam-api-gwj5.onrender.com/api/exams/${examId}`
-        );
-        setExam(response.data);
-      } catch (error) {
-        console.error('Error fetching exam details', error);
-      }
-    };
-
+    fetchExamDetails();
     fetchExamDetails();
   }, [examId]);
 
@@ -63,6 +65,15 @@ const ExamDetail = () => {
       console.error('Error deleting MCQ', error);
     }
   };
+  const handleAddMCQ = async newMCQ => {
+    try {
+      await axios.post('https://exam-api-gwj5.onrender.com/api/mcqs', newMCQ);
+      setShowMCQForm(false);
+      fetchExamDetails();
+    } catch (error) {
+      console.error('Error adding MCQ', error);
+    }
+  };
 
   return (
     <div className='container mx-auto p-4'>
@@ -83,15 +94,32 @@ const ExamDetail = () => {
           name='duration'
           value={exam.duration}
           onChange={handleExamChange}
-          className='block w-full px-3 py-2 border border-gray-300 rounded-md'
+          className='block w-full px-3 py-2 border border-gray-300 rounded-md font-semibold'
         />
       </div>
+      <button
+        type='button'
+        onClick={() => {
+          setShowMCQForm(true);
+        }}
+        className='bg-blue-500 text-white p-3  rounded mr-2 my-5 mb-10'
+      >
+        Add MCQ
+      </button>
+      {showMCQForm && (
+        <McqForm
+          onAddMcq={handleAddMCQ}
+          show={showMCQForm}
+          fetchdetails={fetchExamDetails}
+          setShowMCQForm={setShowMCQForm}
+        />
+      )}
       {exam.mcqs.map((mcq, index) => (
         <div key={mcq._id} className='mb-4'>
           <label>Question {index + 1}</label>
           <button
             onClick={() => handleDeleteMCQ(mcq._id, index)}
-            className='bg-red-500 text-white px-3 py-1 rounded'
+            className='bg-red-500 text-white px-3 py-1 rounded m-2'
           >
             Delete
           </button>
