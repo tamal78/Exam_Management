@@ -1,5 +1,6 @@
 # Exam-MCQ-App
 
+- API HOSTED LINK: [Link](https://exam-api-gwj5.onrender.com/)
 ```
 
 exam-mcq-app
