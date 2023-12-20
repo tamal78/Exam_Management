@@ -9,7 +9,7 @@ const ExamList = () => {
 
   const fetchExams = () => {
     axios
-      .get('http://localhost:5000/api/exams')
+      .get('https://exam-management-tamal78.vercel.app/api/exams')
       .then(response => {
         setExams(response.data);
       })
@@ -22,7 +22,7 @@ const ExamList = () => {
 
   const deleteExam = examId => {
     axios
-      .delete(`http://localhost:5000/api/exams/${examId}`)
+      .delete(`https://exam-management-tamal78.vercel.app/api/exams/${examId}`)
       .then(fetchExams())
       .catch(error => console.error('Error fetching exams', error));
   };

@@ -25,7 +25,10 @@ const MCQForm = () => {
     };
 
     try {
-      await axios.post('http://localhost:5000/api/mcqs', mcqData);
+      await axios.post(
+        'https://exam-management-tamal78.vercel.app/api/mcqs',
+        mcqData
+      );
       alert('MCQ added successfully!');
       setQuestion('');
       setOptions(['', '', '', '']);

@@ -11,7 +11,7 @@ const ExamDetail = () => {
     const fetchExamDetails = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/exams/${examId}`
+          `https://exam-management-tamal78.vercel.app/api/exams/${examId}`
         );
         setExam(response.data);
       } catch (error) {
@@ -39,7 +39,10 @@ const ExamDetail = () => {
 
   const handleSave = async () => {
     try {
-      await axios.put(`http://localhost:5000/api/exams/${examId}`, exam);
+      await axios.put(
+        `https://exam-management-tamal78.vercel.app/${examId}`,
+        exam
+      );
       alert('Exam and MCQs updated successfully!');
       navigate('/exams/');
     } catch (error) {
@@ -49,7 +52,9 @@ const ExamDetail = () => {
 
   const handleDeleteMCQ = async (mcqId, index) => {
     try {
-      await axios.delete(`http://localhost:5000/api/mcqs/${mcqId}`);
+      await axios.delete(
+        `https://exam-management-tamal78.vercel.app/api/mcqs/${mcqId}`
+      );
       // Remove the MCQ from the local state to update the UI
       const updatedMCQs = [...exam.mcqs];
       updatedMCQs.splice(index, 1);

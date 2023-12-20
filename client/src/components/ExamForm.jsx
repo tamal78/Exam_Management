@@ -10,10 +10,13 @@ const ExamForm = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/exams', {
-        title,
-        duration
-      });
+      const response = await axios.post(
+        'https://exam-management-tamal78.vercel.app/api/exams',
+        {
+          title,
+          duration
+        }
+      );
       navigate(`/exams/${response.data._id}/mcqs`);
     } catch (error) {
       console.error('Error creating exam', error);
