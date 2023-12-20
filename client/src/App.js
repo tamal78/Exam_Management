@@ -10,7 +10,7 @@ function App() {
     <Router>
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/exams' element={<ExamList />} />
+        <Route path='/exams/' element={<ExamList />} />
         <Route path='/exams/create/' element={<ExamForm />} />
         <Route path='/exams/:examId/mcqs/' element={<MCQForm />} />
         <Route path='/exams/:examId/' element={<ExamDetail />} />
