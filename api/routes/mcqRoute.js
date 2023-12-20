@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const MCQ = require('../models/MCQ');
+const MCQ = require('../models/Mcq');
 const Exam = require('../models/Exam');
 
 // POST: Create a new MCQ

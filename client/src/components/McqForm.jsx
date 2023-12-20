@@ -26,7 +26,7 @@ const MCQForm = () => {
 
     try {
       await axios.post(
-        'https://exam-management-tamal78.vercel.app/api/mcqs',
+        'https://exam-api-gwj5.onrender.com/api/mcqs',
         mcqData
       );
       alert('MCQ added successfully!');
