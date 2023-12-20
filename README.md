@@ -1,6 +1,8 @@
 # Exam-MCQ-App
 
-- API HOSTED LINK: [Link](https://exam-api-gwj5.onrender.com/)
+- Backend HOSTED LINK: [Link](https://exam-api-gwj5.onrender.com/)
+- Fronted HOSTED LINK: [Link](https://exam-api78.vercel.app/)
+
 ```
 
 exam-mcq-app
