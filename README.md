@@ -1,5 +1,5 @@
 # Exam-MCQ-App
-
+## Backend Api takes few seconds to activate since it is deployed on render free tier.
 - Backend HOSTED LINK: [Link](https://exam-api-gwj5.onrender.com/)
 - Fronted HOSTED LINK: [Link](https://exam-api78.vercel.app/)
 
