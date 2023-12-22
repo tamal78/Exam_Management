@@ -1,6 +1,6 @@
 # Exam-MCQ-App
-### NOTE: Backend Api takes few seconds to activate since it is deployed on render free tier.
-- Backend HOSTED LINK: [Link](https://exam-api-gwj5.onrender.com/)
+
+- Backend HOSTED LINK: [Link](https://exam-api-coral.vercel.app/)
 - Fronted HOSTED LINK: [Link](https://exam-api78.vercel.app/)
 
 ```
@@ -84,44 +84,56 @@ The Exam-MCQ-App is deployed on Vercel, allowing both the frontend and backend c
 6. **Final Testing**:
    - Perform final tests post-deployment to ensure full functionality.
 
-
 # Exam-MCQ-App Backend API Routes
 
 ## Exam Routes
 
 ### POST `/api/exams/`
+
 **Purpose**: Create a new exam.
+
 - **Request Body**: Includes `title`, `duration`, and optionally `mcqs` (array of MCQ IDs).
 
 ### GET `/api/exams/`
+
 **Purpose**: Retrieve all exams.
 
 ### GET `/api/exams/:id`
+
 **Purpose**: Retrieve a single exam by ID.
 
 ### PUT `/api/exams/:id`
+
 **Purpose**: Update an exam.
+
 - **Request Body**: Includes optional `title`, `duration`, and `mcqs` (array of updated MCQ IDs or objects).
 
 ### DELETE `/api/exams/:id`
+
 **Purpose**: Delete an exam by ID.
 
 ## MCQ Routes
 
 ### POST `/api/mcqs/`
+
 **Purpose**: Create a new MCQ and associate it with an exam.
+
 - **Request Body**: Includes `question`, `options` (array of strings), `correctOption`, and `examId` (MongoDB ObjectId).
 
 ### GET `/api/mcqs/`
+
 **Purpose**: Retrieve all MCQs.
 
 ### GET `/api/mcqs/:id`
+
 **Purpose**: Retrieve a single MCQ by ID.
 
 ### PUT `/api/mcqs/:id`
+
 **Purpose**: Update an MCQ.
+
 - **Request Body**: Includes optional `question`, `options` (array of strings), and `correctOption`.
 
 ### DELETE `/api/mcqs/:id`
-**Purpose**: Delete an MCQ by ID.
 
+**Purpose**: Delete an MCQ by ID.

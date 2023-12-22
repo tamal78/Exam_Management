@@ -12,7 +12,7 @@ const ExamDetail = () => {
   const fetchExamDetails = async () => {
     try {
       const response = await axios.get(
-        `https://exam-api-gwj5.onrender.com/api/exams/${examId}`
+        `https://exam-api-coral.vercel.app/api/exams/${examId}`
       );
       setExam(response.data);
     } catch (error) {
@@ -42,7 +42,7 @@ const ExamDetail = () => {
   const handleSave = async () => {
     try {
       await axios.put(
-        `https://exam-api-gwj5.onrender.com/api/exams/${examId}`,
+        `https://exam-api-coral.vercel.app/api/exams/${examId}`,
         exam
       );
       alert('Exam and MCQs updated successfully!');
@@ -54,9 +54,7 @@ const ExamDetail = () => {
 
   const handleDeleteMCQ = async (mcqId, index) => {
     try {
-      await axios.delete(
-        `https://exam-api-gwj5.onrender.com/api/mcqs/${mcqId}`
-      );
+      await axios.delete(`https://exam-api-coral.vercel.app/api/mcqs/${mcqId}`);
       // Remove the MCQ from the local state to update the UI
       const updatedMCQs = [...exam.mcqs];
       updatedMCQs.splice(index, 1);
@@ -67,7 +65,7 @@ const ExamDetail = () => {
   };
   const handleAddMCQ = async newMCQ => {
     try {
-      await axios.post('https://exam-api-gwj5.onrender.com/api/mcqs', newMCQ);
+      await axios.post('https://exam-api-coral.vercel.app/api/mcqs', newMCQ);
       setShowMCQForm(false);
       fetchExamDetails();
     } catch (error) {

@@ -8,7 +8,7 @@ const ExamList = () => {
 
   const fetchExams = () => {
     axios
-      .get('https://exam-api-gwj5.onrender.com/api/exams')
+      .get('https://exam-api-coral.vercel.app/api/exams')
       .then(response => {
         setExams(response.data);
       })
@@ -21,7 +21,7 @@ const ExamList = () => {
 
   const deleteExam = examId => {
     axios
-      .delete(`https://exam-api-gwj5.onrender.com/api/exams/${examId}`)
+      .delete(`https://exam-api-coral.vercel.app/api/exams/${examId}`)
       .then(() => {
         fetchExams();
       })

@@ -11,7 +11,7 @@ const ExamForm = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        'https://exam-api-gwj5.onrender.com/api/exams',
+        'https://exam-api-coral.vercel.app/api/exams',
         {
           title,
           duration

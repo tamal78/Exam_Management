@@ -25,7 +25,7 @@ const MCQForm = ({ setShowMCQForm, show, onAddMcq, fetchdetails }) => {
 
     try {
       const response = await axios.post(
-        'https://exam-api-gwj5.onrender.com/api/mcqs',
+        'https://exam-api-coral.vercel.app/api/mcqs',
         mcqData
       );
       alert('MCQ added successfully!');
