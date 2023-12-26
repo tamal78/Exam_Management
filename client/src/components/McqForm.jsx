@@ -29,12 +29,14 @@ const MCQForm = ({ setShowMCQForm, show, onAddMcq, fetchdetails }) => {
         mcqData
       );
       alert('MCQ added successfully!');
-      // onAddMcq(response.data);
-      fetchdetails();
-      setShowMCQForm(false);
       setQuestion('');
       setOptions(['', '', '', '']);
       setCorrectOption('');
+      if (show) {
+        fetchdetails();
+        setShowMCQForm(false);
+      }
+      // onAddMcq(response.data);
     } catch (error) {
       console.error('Error submitting MCQ', error);
     }
